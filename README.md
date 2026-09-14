@@ -2,7 +2,11 @@
 
 A privacy-first Chrome extension that hides unwanted YouTube comments locally.
 
-It does **not** delete, report, dislike or modify comments on YouTube. Filtering only changes what is displayed in your own browser.
+## v1.1.0
+
+- Added **duplicate-comment detection** for repeated normalized comment text.
+- Keeps keyword, username, link, emoji and repeated-spam filtering local in the browser.
+- The extension still does not delete, report, dislike or modify comments on YouTube.
 
 ## Features
 
@@ -11,6 +15,7 @@ It does **not** delete, report, dislike or modify comments on YouTube. Filtering
 - Optionally hide comments containing links.
 - Hide emoji-heavy spam.
 - Hide repeated-character and repeated-group spam.
+- Hide duplicate comments on the same page.
 - Optionally hide very short comments.
 - Optionally hide all replies.
 - Show a placeholder for filtered comments so you can reveal them manually.
@@ -22,33 +27,13 @@ It does **not** delete, report, dislike or modify comments on YouTube. Filtering
 
 ## Privacy
 
-All settings are stored with Chrome extension sync storage.
-
-The extension does not send:
-
-- comment text;
-- usernames;
-- video titles;
-- watch history;
-- cookies;
-- passwords;
-- authentication tokens
-
-to any external service.
+All settings are stored with Chrome extension storage. The extension does not send comment text, usernames, video titles, watch history, cookies, passwords or authentication tokens to any external service.
 
 ## How filtering works
 
 The extension observes YouTube's dynamically loaded comment elements and applies local display rules.
 
-A comment can be hidden because of:
-
-- blocked keyword;
-- blocked user;
-- detected URL/domain;
-- emoji-heavy content;
-- long repeated characters/groups;
-- optional minimum-length rule;
-- optional reply hiding.
+A comment can be hidden because of a blocked keyword/user, detected URL/domain, emoji-heavy content, repeated spam, duplicate content, minimum-length rule or optional reply hiding.
 
 ## Install
 
@@ -63,8 +48,6 @@ A comment can be hidden because of:
 ## Notes
 
 YouTube changes its page structure over time. DOM selectors may require maintenance in future versions.
-
-Spam detection is heuristic. A legitimate comment can occasionally match a rule, which is why the optional placeholder allows individual comments to be revealed.
 
 ## Disclaimer
 
